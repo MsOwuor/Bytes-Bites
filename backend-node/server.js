@@ -1,23 +1,25 @@
-const authRoutes = require('./routes/auth');
+const auth = require('./routes/auth');
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
+const connectDB = require('./utils/db');
 
 dotenv.config();
+
 const app = express();
 app.use(express.json());
 app.use(cors());
 
+connectDB();
+
+const auth = require('./routes/auth');
+const blogRoutes = require('./routes/blogRoutes');
+const recommendationRoutes = require('./routes/recommendationRoutes');
+
+app.use('/api/auth', auth);
+app.use('/api', blogRoutes);
+app.use('/api', recommendationRoutes);
+
 const PORT = process.env.PORT || 5000;
-const MONGO_URI = process.env.MONGO_URI;
-
-mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('MongoDB connected'))
-  .catch(err => console.log(err));
-
-app.get('/', (req, res) => res.send('API is running...'));
-app.use('/api/auth', authRoutes);
-
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
