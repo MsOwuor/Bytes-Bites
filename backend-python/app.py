@@ -9,6 +9,7 @@ def blog():
         return jsonify({"message": "Get blog posts"})
     elif request.method == 'POST':
         # Create a new blog post
+        data = request.json
         return jsonify({"message": "Create blog post"})
 
 @app.route('/api/recommendations', methods=['GET'])
