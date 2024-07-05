@@ -19,7 +19,7 @@ const App = () => {
       <Box>
         <Flex as="nav" p="4" bg="gray.800" color="white" align="center">
           <Flex align="center">
-            <Image src="/path-to-logo.png" alt="Logo" boxSize="40px" mr="2" />
+            <Image src="/slide1.jpg" alt="Logo" boxSize="40px" mr="2" />
             <Box as={Link} to="/" fontSize="xl" fontWeight="bold">
               Bytes-Bytes
             </Box>
