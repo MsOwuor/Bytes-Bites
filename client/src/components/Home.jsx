@@ -7,7 +7,7 @@ import 'tailwindcss/tailwind.css';
 const Home = () => {
   return (
     <Box>
-      <Box className="w-full h-[40vh] md:h-[70vh] overflow-hidden">
+      <Box className="w-full h-[40vh] md:h-screen overflow-hidden">
         <Carousel autoPlay interval={3000} infiniteLoop showThumbs={false} showStatus={false}>
           <div>
             <img src="/slide1.jpg" alt="Slide 1" className="w-full h-full object-cover" />
@@ -22,13 +22,13 @@ const Home = () => {
       </Box>
       <Flex direction={{ base: 'column', md: 'row' }} align="center" justify="center" p="8" bg="gray-100">
         <Stack spacing={4} maxW="lg" textAlign={{ base: 'center', md: 'left' }} className="md:text-left">
-          <Text fontSize="2xl" fontWeight="bold" className="text-3xl font-bold">
+          <Text fontSize={{ base: '2xl', md: '4xl' }} fontWeight="bold" className="text-3xl font-bold">
             Embark on a Culinary Journey
           </Text>
-          <Text className="text-lg">
+          <Text fontSize={{ base: 'lg', md: '2xl' }} className="text-lg">
             Welcome to my online home. I invite you to explore my life and learn more about me.
           </Text>
-          <Button colorScheme="teal" size="lg" className="mt-4">
+          <Button colorScheme="teal" size={{ base: 'md', md: 'lg' }} className="mt-4">
             Learn More
           </Button>
         </Stack>
@@ -37,7 +37,7 @@ const Home = () => {
             src="/profile.jpg"
             alt="Portrait"
             borderRadius="full"
-            boxSize="300px"
+            boxSize={{ base: '200px', md: '300px' }}
             className="shadow-lg"
           />
         </Box>
