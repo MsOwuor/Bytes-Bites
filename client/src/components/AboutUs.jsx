@@ -1,10 +1,84 @@
 import React from 'react';
+import { Box, Heading, Text, Button, Flex, Stack, Image } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 }
+};
 
 const AboutUs = () => {
   return (
-    <div>
-      <h1>About Us</h1>
-    </div>
+    <Box p="8" bg="gray.100" minHeight="100vh">
+      <Box maxW="800px" mx="auto" textAlign="center" mb="12">
+        <Heading as="h2" size="xl">About Us</Heading>
+        <Text fontSize="xl" mt="4">Discover Our Services</Text>
+      </Box>
+
+      <Stack spacing="8" maxW="800px" mx="auto">
+        <motion.div initial="hidden" animate="visible" variants={cardVariants}>
+          <Text fontSize="lg" textAlign="center">
+            Our company offers a unique blend of IT solutions and culinary expertise, providing our clients with a seamless journey from recipe to plate. Our team of experts is dedicated to delivering exceptional service and results.
+          </Text>
+        </motion.div>
+
+        <motion.div initial="hidden" animate="visible" variants={cardVariants}>
+          <Text fontSize="lg" textAlign="center">
+            Start with the recipe - find out what ingredients they want and give it to them.
+          </Text>
+        </motion.div>
+
+        <Flex justify="center" mt="8">
+          <motion.div initial="hidden" animate="visible" variants={cardVariants} textAlign="center">
+            <Button colorScheme="teal" size="lg" as="a" href="/services">
+              Discover More
+            </Button>
+          </motion.div>
+        </Flex>
+
+        <motion.div initial="hidden" animate="visible" variants={cardVariants} mt="8" textAlign="center">
+          <Text fontSize="xl">It's all about the journey.</Text>
+        </motion.div>
+      </Stack>
+
+      <Flex direction="column" alignItems="center" mt="12">
+        <Heading as="h3" size="lg" mb="6">Our Team</Heading>
+
+        <Flex direction={{ base: 'column', md: 'row' }} justify="center" align="center" wrap="wrap">
+          {/* Worker 1 */}
+          <Box maxW="sm" p="6" borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="md" mx="4" my="4">
+            <Image src="/profile1.jpg" alt="Worker 1" borderRadius="full" boxSize="150px" mx="auto" />
+            <Heading as="h4" size="md" mb="2" textAlign="center">Founder Name 1</Heading>
+            <Text fontSize="md" mb="4" textAlign="center">Role Description</Text>
+            <Text fontSize="sm" fontStyle="italic" textAlign="center">Testimonial: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."</Text>
+          </Box>
+
+          {/* Worker 2 */}
+          <Box maxW="sm" p="6" borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="md" mx="4" my="4">
+            <Image src="/profile2.jpg" alt="Worker 2" borderRadius="full" boxSize="150px" mx="auto" />
+            <Heading as="h4" size="md" mb="2" textAlign="center">Worker Name 1</Heading>
+            <Text fontSize="md" mb="4" textAlign="center">Role Description</Text>
+            <Text fontSize="sm" fontStyle="italic" textAlign="center">Testimonial: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."</Text>
+          </Box>
+
+          {/* Worker 3 */}
+          <Box maxW="sm" p="6" borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="md" mx="4" my="4">
+            <Image src="/profile3.jpg" alt="Worker 3" borderRadius="full" boxSize="150px" mx="auto" />
+            <Heading as="h4" size="md" mb="2" textAlign="center">Founder Name 2</Heading>
+            <Text fontSize="md" mb="4" textAlign="center">Role Description</Text>
+            <Text fontSize="sm" fontStyle="italic" textAlign="center">Testimonial: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."</Text>
+          </Box>
+
+          {/* Worker 4 */}
+          <Box maxW="sm" p="6" borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="md" mx="4" my="4">
+            <Image src="/profile4.jpg" alt="Worker 4" borderRadius="full" boxSize="150px" mx="auto" />
+            <Heading as="h4" size="md" mb="2" textAlign="center">Worker Name 2</Heading>
+            <Text fontSize="md" mb="4" textAlign="center">Role Description</Text>
+            <Text fontSize="sm" fontStyle="italic" textAlign="center">Testimonial: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."</Text>
+          </Box>
+        </Flex>
+      </Flex>
+    </Box>
   );
 };
 

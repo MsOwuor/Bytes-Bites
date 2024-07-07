@@ -11,6 +11,7 @@ import ContactUs from './components/ContactUs';
 import MyAccount from './components/MyAccount';
 import News from './components/News';
 import Portfolio from './components/Portfolio';
+import Footer from './components/Footer'; // Import Footer component
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
             <Route path="/contact" element={<ContactUs />} />
           </Routes>
         </Box>
+        <Footer /> {/* Include Footer component here */}
       </Box>
     </Router>
   );
