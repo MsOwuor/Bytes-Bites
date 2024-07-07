@@ -18,7 +18,7 @@ import {
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon, ChevronDownIcon } from '@chakra-ui/icons';
 
-const Navbar = () => {
+const Navbar = ({ isLoggedIn, handleLogout }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -49,43 +49,74 @@ const Navbar = () => {
           </HStack>
         </Center>
         <Flex alignItems="center">
-          <Menu>
-            <MenuButton
-              as={Button}
-              rounded="full"
-              variant="link"
-              cursor="pointer"
-              minW={0}
-            >
-              Account <ChevronDownIcon />
-            </MenuButton>
-            <MenuList>
-              <MenuItem as={Link} to="/login">
+          {isLoggedIn ? (
+            <Menu>
+              <MenuButton
+                as={Button}
+                rounded="full"
+                variant="link"
+                cursor="pointer"
+                minW={0}
+              >
+                Account <ChevronDownIcon />
+              </MenuButton>
+              <MenuList>
+                <MenuItem as={Link} to="/account">
+                  My Account
+                </MenuItem>
+                <MenuItem onClick={handleLogout}>Logout</MenuItem>
+              </MenuList>
+            </Menu>
+          ) : (
+            <Stack direction="row" spacing={4}>
+              <Button as={Link} to="/login" variant="link">
                 Login
-              </MenuItem>
-              <MenuItem as={Link} to="/register">
+              </Button>
+              <Button as={Link} to="/register" variant="link">
                 Register
-              </MenuItem>
-              <MenuDivider />
-              <MenuItem as={Link} to="/account">
-                My Account
-              </MenuItem>
-            </MenuList>
-          </Menu>
+              </Button>
+            </Stack>
+          )}
         </Flex>
       </Flex>
 
       {isOpen ? (
         <Box pb={4} display={{ md: 'none' }}>
           <Stack as="nav" spacing={4}>
-            <Link to="/" onClick={onClose}>Home</Link>
-            <Link to="/services" onClick={onClose}>Services</Link>
-            <Link to="/news" onClick={onClose}>News</Link>
-            <Link to="/about" onClick={onClose}>About Us</Link>
-            <Link to="/contact" onClick={onClose}>Contact Us</Link>
-            <Link to="/login" onClick={onClose}>Login</Link>
-            <Link to="/register" onClick={onClose}>Register</Link>
-            <Link to="/account" onClick={onClose}>My Account</Link>
+            <Link to="/" onClick={onClose}>
+              Home
+            </Link>
+            <Link to="/services" onClick={onClose}>
+              Services
+            </Link>
+            <Link to="/news" onClick={onClose}>
+              News
+            </Link>
+            <Link to="/about" onClick={onClose}>
+              About Us
+            </Link>
+            <Link to="/contact" onClick={onClose}>
+              Contact Us
+            </Link>
+            {isLoggedIn ? (
+              <>
+                <Link to="/account" onClick={onClose}>
+                  My Account
+                </Link>
+                <Button onClick={handleLogout} variant="link">
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <>
+                <Link to="/login" onClick={onClose}>
+                  Login
+                </Link>
+                <Link to="/register" onClick={onClose}>
+                  Register
+                </Link>
+              </>
+            )}
           </Stack>
         </Box>
       ) : null}

@@ -1,39 +1,37 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import { Input, Button, FormControl, FormLabel, Heading, Box } from '@chakra-ui/react';
+import { Box, Heading, Input, Button, FormControl, FormLabel } from '@chakra-ui/react';
 
-const Register = () => {
-  const [username, setUsername] = useState('');
+const Register = ({ handleSignup }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const res = await axios.post('http://localhost:5000/api/auth/register', { username, email, password });
-      console.log(res.data);
-    } catch (error) {
-      console.error(error);
+    // Basic validation, replace with actual signup logic
+    if (!email || !password) {
+      alert('Please enter both email and password.');
+      return;
     }
+    handleSignup(email, password);
   };
 
   return (
-    <Box>
-      <Heading>Register</Heading>
+    <Box maxW="sm" mx="auto" mt="8" p="4">
+      <Heading as="h2" size="lg" mb="4" textAlign="center">
+        Signup
+      </Heading>
       <form onSubmit={handleSubmit}>
-        <FormControl isRequired>
-          <FormLabel>Username</FormLabel>
-          <Input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-        </FormControl>
-        <FormControl isRequired>
-          <FormLabel>Email</FormLabel>
+        <FormControl id="email" mb="4">
+          <FormLabel>Email address</FormLabel>
           <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
         </FormControl>
-        <FormControl isRequired>
+        <FormControl id="password" mb="4">
           <FormLabel>Password</FormLabel>
           <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </FormControl>
-        <Button type="submit">Register</Button>
+        <Button type="submit" colorScheme="blue" width="100%">
+          Signup
+        </Button>
       </form>
     </Box>
   );

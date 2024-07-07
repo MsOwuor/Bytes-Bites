@@ -1,34 +1,37 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import { Input, Button, FormControl, FormLabel, Heading, Box } from '@chakra-ui/react';
+import { Box, Heading, Input, Button, FormControl, FormLabel, FormHelperText } from '@chakra-ui/react';
 
-const Login = () => {
+const Login = ({ handleLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', { email, password });
-      console.log(res.data);
-    } catch (error) {
-      console.error(error);
+    // Basic validation, replace with actual authentication logic
+    if (!email || !password) {
+      alert('Please enter both email and password.');
+      return;
     }
+    handleLogin(email, password);
   };
 
   return (
-    <Box>
-      <Heading>Login</Heading>
+    <Box maxW="sm" mx="auto" mt="8" p="4">
+      <Heading as="h2" size="lg" mb="4" textAlign="center">
+        Login
+      </Heading>
       <form onSubmit={handleSubmit}>
-        <FormControl isRequired>
-          <FormLabel>Email</FormLabel>
+        <FormControl id="email" mb="4">
+          <FormLabel>Email address</FormLabel>
           <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
         </FormControl>
-        <FormControl isRequired>
+        <FormControl id="password" mb="4">
           <FormLabel>Password</FormLabel>
           <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </FormControl>
-        <Button type="submit">Login</Button>
+        <Button type="submit" colorScheme="blue" width="100%">
+          Login
+        </Button>
       </form>
     </Box>
   );
