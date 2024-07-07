@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Box } from '@chakra-ui/react';
+import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
@@ -9,7 +10,7 @@ import AboutUs from './components/AboutUs';
 import ContactUs from './components/ContactUs';
 import MyAccount from './components/MyAccount';
 import News from './components/News';
-import Navbar from './components/Navbar';
+import Portfolio from './components/Portfolio';
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
             <Route path="/account" element={<MyAccount />} />
             <Route path="/services" element={<Services />} />
             <Route path="/news" element={<News />} />
+            <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/contact" element={<ContactUs />} />
           </Routes>
