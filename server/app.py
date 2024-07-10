@@ -1,36 +1,38 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_bcrypt import Bcrypt
+from flask_restful import Api
 from flask_jwt_extended import JWTManager
+from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_cors import CORS
+from dotenv import load_dotenv
+import os
 
-db = SQLAlchemy()
-bcrypt = Bcrypt()
-jwt = JWTManager()
-migrate = Migrate()
+load_dotenv()
 
-def create_app():
-    app = Flask(__name__)
-    app.config.from_object('dbconfig.Config')
+app = Flask(__name__)
+app.secret_key = os.getenv('APP_SECRET_KEY')
+app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///site.db'
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.config["JWT_SECRET_KEY"] = os.getenv('JWT_SECRET_KEY')
 
-    db.init_app(app)
-    bcrypt.init_app(app)
-    jwt.init_app(app)
-    migrate.init_app(app, db)
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+jwt = JWTManager(app)
+CORS(app)
+api = Api(app)
 
-    with app.app_context():
-        from routes import UserRegister, UserLogin, NewsPost, NewsPostList, UserProfile
-        # Register your resources
-        app.add_url_rule('/register', view_func=UserRegister.as_view('register'))
-        app.add_url_rule('/login', view_func=UserLogin.as_view('login'))
-        app.add_url_rule('/posts/<int:post_id>', view_func=NewsPost.as_view('post'))
-        app.add_url_rule('/posts', view_func=NewsPostList.as_view('posts'))
-        app.add_url_rule('/profile', view_func=UserProfile.as_view('profile'))
+# Import resources
+from resources import UserRegister, UserLogin, NewsPostResource, NewsPostListResource, UserProfileResource
+from resources import RecipeResource, RecipeListResource
 
-        db.create_all()
-
-    return app
+# API resource endpoints
+api.add_resource(UserRegister, '/register')
+api.add_resource(UserLogin, '/login')
+api.add_resource(NewsPostResource, '/news/<int:post_id>')
+api.add_resource(NewsPostListResource, '/news')
+api.add_resource(UserProfileResource, '/profile')
+api.add_resource(RecipeResource, '/recipes/<int:recipe_id>')
+api.add_resource(RecipeListResource, '/recipes')
 
 if __name__ == '__main__':
-    app = create_app()
     app.run(debug=True)

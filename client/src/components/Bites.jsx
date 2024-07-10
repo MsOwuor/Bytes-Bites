@@ -6,77 +6,49 @@ import {
   Text,
   Link,
   Button,
-  Input,
-  Select,
-  SimpleGrid,
-  Stack,
   Spinner,
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 
 const Bites = () => {
-  const [articles, setArticles] = useState([]);
+  const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
-  const [sortBy, setSortBy] = useState('date'); // Default sort by date
   const [currentPage, setCurrentPage] = useState(1);
-  const [articlesPerPage] = useState(6); // Number of articles per page
+  const [recipesPerPage] = useState(6); // Number of recipes per page
 
   useEffect(() => {
-    const fetchArticles = async () => {
+    const fetchRecipes = async () => {
       setLoading(true);
       try {
-        // Simulating API call or fetching from a database
         // Replace with actual API call or database query
-        // Example response structure
-        const response = [
-          {
-            id: 1,
-            title: 'Article 1',
-            category: 'Business',
-            date: '2024-07-07',
-            content: 'From Code to Cuisine: Glowing Reviews of Our IT Chef.',
-          },
-          {
-            id: 2,
-            title: 'Article 2',
-            category: 'Technology',
-            date: '2024-07-06',
-            content: 'Gourmet Meets Geek: Customer Testimonials for Our IT Chef.',
-          },
-          // Add more articles here
-        ];
+        const response = await fetch('/api/recipes'); // Example endpoint
 
-        // Apply sorting based on sortBy state
-        if (sortBy === 'date') {
-          response.sort((a, b) => new Date(b.date) - new Date(a.date));
-        } else if (sortBy === 'popularity') {
-          // Sort by popularity logic
-        } else if (sortBy === 'relevance') {
-          // Sort by relevance logic
+        if (!response.ok) {
+          throw new Error('Failed to fetch recipes');
         }
 
-        // Filtering articles based on searchQuery
-        const filteredArticles = response.filter((article) =>
-          article.title.toLowerCase().includes(searchQuery.toLowerCase())
-        );
+        const data = await response.json();
 
-        setArticles(filteredArticles);
+        // Apply sorting based on your logic (date, popularity, etc.)
+        const sortedRecipes = data.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        setRecipes(sortedRecipes);
         setLoading(false);
       } catch (error) {
-        setError(error);
+        setError(error.message);
         setLoading(false);
       }
     };
 
-    fetchArticles();
-  }, [searchQuery, sortBy]);
+    fetchRecipes();
+  }, []);
 
   // Pagination logic
-  const indexOfLastArticle = currentPage * articlesPerPage;
-  const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
-  const currentArticles = articles.slice(indexOfFirstArticle, indexOfLastArticle);
+  const indexOfLastRecipe = currentPage * recipesPerPage;
+  const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
+  const currentRecipes = recipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
 
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -102,16 +74,16 @@ const Bites = () => {
       <Box maxW="7xl" mx="auto" px="6" lg="8">
         <Box maxW="2xl" mx="auto" mb="10">
           <Heading as="h2" size="3xl" fontWeight="bold" textAlign="center" mb="2">
-            Recent News Articles
+            Delicious Recipes
           </Heading>
           <Text textAlign="center" fontSize="lg" color="gray.600">
-            Discover the latest updates and insights.
+            Explore mouth-watering dishes.
           </Text>
         </Box>
         <Flex mx="auto" maxW="2xl" gridGap="8" flexWrap="wrap" justifyContent="space-between">
-          {currentArticles.map((article) => (
+          {currentRecipes.map((recipe) => (
             <motion.div
-              key={article.id}
+              key={recipe.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -120,22 +92,22 @@ const Bites = () => {
               <Box borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="md">
                 <Box p="6">
                   <Heading as="h3" size="lg" mb="2" lineHeight="tight">
-                    {article.title}
+                    {recipe.title}
                   </Heading>
                   <Text color="gray.600" mb="4">
-                    {article.category} | {new Date(article.date).toLocaleDateString()}
+                    {recipe.category} | {new Date(recipe.date).toLocaleDateString()}
                   </Text>
                   <Text mb="4" className="line-clamp-3">
-                    {article.content}
+                    {recipe.description}
                   </Text>
                   <Button
                     colorScheme="blue"
                     size="sm"
                     variant="outline"
                     as={Link}
-                    href={`#${article.id}`} // Replace with actual link to full article
+                    href={`/recipes/${recipe.id}`} // Replace with actual link to recipe details
                   >
-                    Read More
+                    View Recipe
                   </Button>
                 </Box>
               </Box>
@@ -143,9 +115,10 @@ const Bites = () => {
           ))}
         </Flex>
         <Box mt="10" textAlign="center">
+          {/* Pagination component */}
           <Pagination
-            articlesPerPage={articlesPerPage}
-            totalArticles={articles.length}
+            recipesPerPage={recipesPerPage}
+            totalRecipes={recipes.length}
             paginate={paginate}
             currentPage={currentPage}
           />
@@ -155,28 +128,31 @@ const Bites = () => {
   );
 };
 
-const Pagination = ({ articlesPerPage, totalArticles, paginate, currentPage }) => {
+const Pagination = ({ recipesPerPage, totalRecipes, paginate, currentPage }) => {
   const pageNumbers = [];
 
-  for (let i = 1; i <= Math.ceil(totalArticles / articlesPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(totalRecipes / recipesPerPage); i++) {
     pageNumbers.push(i);
   }
 
   return (
     <nav>
-      <Stack direction="row" spacing="2" justify="center">
-        {pageNumbers.map((number) => (
-          <Button
-            key={number}
-            colorScheme={number === currentPage ? 'blue' : 'gray'}
-            variant={number === currentPage ? 'solid' : 'outline'}
-            size="sm"
-            onClick={() => paginate(number)}
-          >
-            {number}
-          </Button>
-        ))}
-      </Stack>
+      {pageNumbers.length > 1 && (
+        <Flex justify="center">
+          {pageNumbers.map((number) => (
+            <Button
+              key={number}
+              colorScheme={number === currentPage ? 'blue' : 'gray'}
+              variant={number === currentPage ? 'solid' : 'outline'}
+              size="sm"
+              onClick={() => paginate(number)}
+              m="1"
+            >
+              {number}
+            </Button>
+          ))}
+        </Flex>
+      )}
     </nav>
   );
 };
