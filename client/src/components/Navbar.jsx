@@ -43,7 +43,7 @@ const Navbar = ({ isLoggedIn, handleLogout }) => {
           <HStack as="nav" spacing={8}>
             <Link to="/">Home</Link>
             <Link to="/services">Services</Link>
-            <Link to="/news">News</Link>
+            <Link to="/news">Bites</Link>
             <Link to="/about">About Us</Link>
             <Link to="/contact">Contact Us</Link>
           </HStack>
