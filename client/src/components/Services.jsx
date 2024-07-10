@@ -27,7 +27,7 @@ const Services = () => {
           <Box borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="md">
             <Image src="/slide2.jpg" alt="My Work" objectFit="cover" w="100%" h={{ base: '200px', md: '300px' }} />
             <Box p="6">
-              <Heading as="h3" size="lg" mb="4">Bites</Heading>
+              <Heading as="h3" size="lg" mb="4">Bytes</Heading>
               <Text mb="4">Explore my programming journey, key lessons learned, languages mastered, and impactful projects completed, showcasing growth, expertise, and passion for coding.</Text>
               <Button as={Link} to="/portfolio" colorScheme="teal">Discover</Button>
             </Box>
