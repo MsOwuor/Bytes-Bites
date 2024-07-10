@@ -9,7 +9,7 @@ import Services from './components/Services';
 import AboutUs from './components/AboutUs';
 import ContactUs from './components/ContactUs';
 import MyAccount from './components/MyAccount';
-import News from './components/News';
+import Bites from './components/Bites';
 import Portfolio from './components/Portfolio';
 import Footer from './components/Footer'; // Import Footer component
 
@@ -25,7 +25,7 @@ const App = () => {
             <Route path="/register" element={<Register />} />
             <Route path="/account" element={<MyAccount />} />
             <Route path="/services" element={<Services />} />
-            <Route path="/news" element={<News />} />
+            <Route path="/news" element={<Bites />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/contact" element={<ContactUs />} />
