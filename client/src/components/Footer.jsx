@@ -10,15 +10,15 @@ const Footer = () => {
           <Box flex="1">
             <Heading as="h3" size="md" mb="4">Connect with Us</Heading>
             <Stack direction="row" spacing="4" mb="4">
-              <Link href="#" target="_blank"><FaFacebook size={24} /></Link>
-              <Link href="#" target="_blank"><FaTwitter size={24} /></Link>
-              <Link href="#" target="_blank"><FaLinkedin size={24} /></Link>
-              <Link href="#" target="_blank"><FaInstagram size={24} /></Link>
+              <Link href="https://www.facebook.com/owuorimmaculate/" target="_blank"><FaFacebook size={24} /></Link>
+              <Link href="https://x.com/myquiey?t=AvexFJqezsvBynvie_BFYQ&s=09" target="_blank"><FaTwitter size={24} /></Link>
+              <Link href="https://www.linkedin.com/in/immaculate-adhiambo-aab4111bb/" target="_blank"><FaLinkedin size={24} /></Link>
+              <Link href="https://www.instagram.com/myquiey/" target="_blank"><FaInstagram size={24} /></Link>
             </Stack>
             <Text mb="4">Address: Prime residence, Nairobi, Kenya</Text>
             <Text mb="4">Telephone: +254 741020860</Text>
             <Text mb="4">Email: immaculateadhiambo79@gmail.com</Text>
-            <Image src="/logo.png" alt="Logo" boxSize="80px" mb="4" />
+            <Image src="/slide1.jpg" alt="Logo" boxSize="80px" mb="4" />
           </Box>
           <Box flex="1">
             <Heading as="h3" size="md" mb="4">Send us your Feedback</Heading>
