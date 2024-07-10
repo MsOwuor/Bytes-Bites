@@ -15,9 +15,9 @@ const Footer = () => {
               <Link href="#" target="_blank"><FaLinkedin size={24} /></Link>
               <Link href="#" target="_blank"><FaInstagram size={24} /></Link>
             </Stack>
-            <Text mb="4">Address: 123 Street, Town, City</Text>
-            <Text mb="4">Telephone: +1 234 567 890</Text>
-            <Text mb="4">Email: info@example.com</Text>
+            <Text mb="4">Address: Prime residence, Nairobi, Kenya</Text>
+            <Text mb="4">Telephone: +254 741020860</Text>
+            <Text mb="4">Email: immaculateadhiambo79@gmail.com</Text>
             <Image src="/logo.png" alt="Logo" boxSize="80px" mb="4" />
           </Box>
           <Box flex="1">
