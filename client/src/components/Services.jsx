@@ -16,9 +16,9 @@ const Services = () => {
           <Box borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="md">
             <Image src="/slide1.jpg" alt="Our Creative Process" objectFit="cover" w="100%" h={{ base: '200px', md: '300px' }} />
             <Box p="6">
-              <Heading as="h3" size="lg" mb="4">Our Creative Process</Heading>
+              <Heading as="h3" size="lg" mb="4">Our Culinary Arts</Heading>
               <Text mb="4">From selecting the finest ingredients to creating stunning presentations, our culinary experts are dedicated to delivering exceptional results.</Text>
-              <Button as={Link} to="/news" colorScheme="teal">Learn More</Button>
+              <Button as={Link} to="/Bites" colorScheme="teal">Learn More</Button>
             </Box>
           </Box>
         </motion.div>
@@ -27,8 +27,8 @@ const Services = () => {
           <Box borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="md">
             <Image src="/slide2.jpg" alt="My Work" objectFit="cover" w="100%" h={{ base: '200px', md: '300px' }} />
             <Box p="6">
-              <Heading as="h3" size="lg" mb="4">My Work</Heading>
-              <Text mb="4">Explore our portfolio of culinary creations and discover the possibilities with Bytes and Bites.</Text>
+              <Heading as="h3" size="lg" mb="4">Bites</Heading>
+              <Text mb="4">Explore my programming journey, key lessons learned, languages mastered, and impactful projects completed, showcasing growth, expertise, and passion for coding.</Text>
               <Button as={Link} to="/portfolio" colorScheme="teal">Discover</Button>
             </Box>
           </Box>
@@ -38,8 +38,8 @@ const Services = () => {
           <Box borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="md">
             <Image src="/slide3.jpg" alt="About Me" objectFit="cover" w="100%" h={{ base: '200px', md: '300px' }} />
             <Box p="6">
-              <Heading as="h3" size="lg" mb="4">About Me</Heading>
-              <Text mb="4">Our team of experts has a passion for culinary arts and a commitment to excellence, making us the perfect partner for your business.</Text>
+              <Heading as="h3" size="lg" mb="4">Personal Life</Heading>
+              <Text mb="4">Discover my journey as a mom of two girls and a wife, balancing family life with personal growth, sharing insights, challenges, and triumphs along the way.</Text>
               <Button as={Link} to="/contact" colorScheme="teal">Contact Us</Button>
             </Box>
           </Box>
