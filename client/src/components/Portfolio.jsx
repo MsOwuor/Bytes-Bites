@@ -16,8 +16,9 @@ const Portfolio = () => {
           <Box borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="md">
             <Image src="/slide1.jpg" alt="Work 1" objectFit="cover" w="100%" h={{ base: '200px', md: '300px' }} />
             <Box p="6">
-              <Heading as="h3" size="lg" mb="4">Work Title 1</Heading>
-              <Text mb="4">Description of the work done. This is a sample of our culinary expertise and creativity.</Text>
+              <Heading as="h3" size="lg" mb="4">Travel Xperience</Heading>
+              <Text mb="4">The purpose of the website is to provide a comprehensive platform for travel enthusiasts to explore destinations around the globe.
+.</Text>
               <Button as="a" href="#" colorScheme="teal" mt="4">View</Button>
             </Box>
           </Box>
