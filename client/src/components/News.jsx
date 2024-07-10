@@ -33,17 +33,17 @@ const News = () => {
         const response = [
           {
             id: 1,
-            title: 'Sample Article 1',
+            title: 'Article 1',
             category: 'Business',
             date: '2024-07-07',
-            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            content: 'From Code to Cuisine: Glowing Reviews of Our IT Chef.',
           },
           {
             id: 2,
-            title: 'Sample Article 2',
+            title: 'Article 2',
             category: 'Technology',
             date: '2024-07-06',
-            content: 'Praesent sit amet odio quis nunc elementum finibus.',
+            content: 'Gourmet Meets Geek: Customer Testimonials for Our IT Chef.',
           },
           // Add more articles here
         ];
