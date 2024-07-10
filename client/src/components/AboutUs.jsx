@@ -48,33 +48,33 @@ const AboutUs = () => {
           {/* Worker 1 */}
           <Box maxW="sm" p="6" borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="md" mx="4" my="4">
             <Image src="/profile1.jpg" alt="Worker 1" borderRadius="full" boxSize="150px" mx="auto" />
-            <Heading as="h4" size="md" mb="2" textAlign="center">Founder Name 1</Heading>
-            <Text fontSize="md" mb="4" textAlign="center">Role Description</Text>
-            <Text fontSize="sm" fontStyle="italic" textAlign="center">Testimonial: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."</Text>
+            <Heading as="h4" size="md" mb="2" textAlign="center">Immaculate Owuor</Heading>
+            <Text fontSize="md" mb="4" textAlign="center">CEO</Text>
+            <Text fontSize="sm" fontStyle="italic" textAlign="center">Testimonial: "An exceptional culinary artist whose creativity and passion transform every meal into an unforgettable experience."</Text>
           </Box>
 
           {/* Worker 2 */}
           <Box maxW="sm" p="6" borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="md" mx="4" my="4">
             <Image src="/profile2.jpg" alt="Worker 2" borderRadius="full" boxSize="150px" mx="auto" />
-            <Heading as="h4" size="md" mb="2" textAlign="center">Worker Name 1</Heading>
-            <Text fontSize="md" mb="4" textAlign="center">Role Description</Text>
-            <Text fontSize="sm" fontStyle="italic" textAlign="center">Testimonial: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."</Text>
+            <Heading as="h4" size="md" mb="2" textAlign="center">Solomon Otieno</Heading>
+            <Text fontSize="md" mb="4" textAlign="center">Co Founder</Text>
+            <Text fontSize="sm" fontStyle="italic" textAlign="center">Testimonial: "An outstanding professional who seamlessly blends IT expertise with culinary passion, delivering innovative and delightful results."</Text>
           </Box>
 
           {/* Worker 3 */}
           <Box maxW="sm" p="6" borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="md" mx="4" my="4">
             <Image src="/profile3.jpg" alt="Worker 3" borderRadius="full" boxSize="150px" mx="auto" />
-            <Heading as="h4" size="md" mb="2" textAlign="center">Founder Name 2</Heading>
-            <Text fontSize="md" mb="4" textAlign="center">Role Description</Text>
-            <Text fontSize="sm" fontStyle="italic" textAlign="center">Testimonial: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."</Text>
+            <Heading as="h4" size="md" mb="2" textAlign="center">Lyvia Malyka</Heading>
+            <Text fontSize="md" mb="4" textAlign="center">Inspiration</Text>
+            <Text fontSize="sm" fontStyle="italic" textAlign="center">Testimonial: "An amazing chef whose culinary creations bring joy to our family and inspire everyone with their exceptional flavors and presentation."</Text>
           </Box>
 
           {/* Worker 4 */}
           <Box maxW="sm" p="6" borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="md" mx="4" my="4">
             <Image src="/profile4.jpg" alt="Worker 4" borderRadius="full" boxSize="150px" mx="auto" />
-            <Heading as="h4" size="md" mb="2" textAlign="center">Worker Name 2</Heading>
-            <Text fontSize="md" mb="4" textAlign="center">Role Description</Text>
-            <Text fontSize="sm" fontStyle="italic" textAlign="center">Testimonial: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."</Text>
+            <Heading as="h4" size="md" mb="2" textAlign="center">Zhavia Sky</Heading>
+            <Text fontSize="md" mb="4" textAlign="center">Inspiration</Text>
+            <Text fontSize="sm" fontStyle="italic" textAlign="center">Testimonial: "An amazing chef whose culinary creations bring joy to our family and inspire everyone with their exceptional flavors and presentation."</Text>
           </Box>
         </Flex>
       </Flex>
