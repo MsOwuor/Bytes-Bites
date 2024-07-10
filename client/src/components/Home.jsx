@@ -36,7 +36,7 @@ const Home = () => {
       >
         <Stack spacing={4} maxW="lg" textAlign={{ base: 'center', md: 'left' }} className="md:text-left">
           <Text fontSize={{ base: '2xl', md: '4xl' }} fontWeight="bold" className="animate__animated animate__fadeInLeft">
-            Embark on a Culinary Journey
+            Code and Cook : Where technology meets taste
           </Text>
           <Text fontSize={{ base: 'lg', md: '2xl' }} className="animate__animated animate__fadeInLeft animate__delay-1s">
             Welcome to my online home. I invite you to explore my life and learn more about me.
