@@ -1,7 +1,10 @@
-from flask import request
-from flask_restful import Resource
+from flask import Blueprint, request
+from flask_restful import Api, Resource
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
-from models import User, NewsPost, db
+from .models import User, NewsPost, db
+
+bp = Blueprint('main', __name__)
+api = Api(bp)
 
 class UserRegister(Resource):
     def post(self):
@@ -24,7 +27,7 @@ class UserLogin(Resource):
             return {'access_token': access_token}, 200
         return {'message': 'Invalid credentials'}, 401
 
-class NewsPost(Resource):
+class NewsPostResource(Resource):
     @jwt_required()
     def get(self, post_id):
         post = NewsPost.query.get_or_404(post_id)
@@ -72,3 +75,10 @@ class UserProfile(Resource):
         user = User.query.get_or_404(user_id)
         posts = [{'id': post.id, 'title': post.title, 'content': post.content} for post in user.posts]
         return {'email': user.email, 'posts': posts}
+
+# Registering routes
+api.add_resource(UserRegister, '/register')
+api.add_resource(UserLogin, '/login')
+api.add_resource(NewsPostList, '/posts')
+api.add_resource(NewsPostResource, '/posts/<int:post_id>')
+api.add_resource(UserProfile, '/profile')
