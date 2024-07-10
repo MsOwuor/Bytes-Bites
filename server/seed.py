@@ -1,5 +1,5 @@
-from server import db, create_app
-from server.models import User, NewsPost
+from app import db, create_app
+from models import User, NewsPost
 
 def seed_db():
     app = create_app()

@@ -1,10 +1,10 @@
 from flask import Blueprint, request
 from flask_restful import Api, Resource
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
-from .models import User, NewsPost, db
+from models import User, NewsPost, db
 
-bp = Blueprint('main', __name__)
-api = Api(bp)
+api_bp = Blueprint('api', __name__)
+api = Api(api_bp)
 
 class UserRegister(Resource):
     def post(self):
