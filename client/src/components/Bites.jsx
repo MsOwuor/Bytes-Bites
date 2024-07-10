@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 
-const News = () => {
+const Bites = () => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -181,4 +181,4 @@ const Pagination = ({ articlesPerPage, totalArticles, paginate, currentPage }) =
   );
 };
 
-export default News;
+export default Bites;
