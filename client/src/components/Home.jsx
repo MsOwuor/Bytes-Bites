@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Box, Flex, Text, Button, Image, Stack } from '@chakra-ui/react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
@@ -41,7 +42,13 @@ const Home = () => {
           <Text fontSize={{ base: 'lg', md: '2xl' }} className="animate__animated animate__fadeInLeft animate__delay-1s">
             Welcome to my online home. I invite you to explore my life and learn more about me.
           </Text>
-          <Button colorScheme="teal" size={{ base: 'md', md: 'lg' }} className="mt-4 animate__animated animate__fadeInUp animate__delay-2s">
+          <Button
+            as={Link}
+            to="/about"
+            colorScheme="teal"
+            size={{ base: 'md', md: 'lg' }}
+            className="mt-4 animate__animated animate__fadeInUp animate__delay-2s"
+          >
             Learn More
           </Button>
         </Stack>
