@@ -90,7 +90,7 @@ const Navbar = ({ isLoggedIn, handleLogout }) => {
               Services
             </Link>
             <Link to="/news" onClick={onClose}>
-              News
+              Bites
             </Link>
             <Link to="/about" onClick={onClose}>
               About Us
