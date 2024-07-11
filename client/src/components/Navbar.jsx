@@ -35,7 +35,7 @@ const Navbar = ({ isLoggedIn, handleLogout }) => {
           <Box as={Link} to="/" display="flex" alignItems="center">
             <Image src="/slide1.jpg" alt="Logo" boxSize="40px" mr="2" />
             <Box fontSize="xl" fontWeight="bold">
-              Bytes-Bytes
+              Bytes-Bites
             </Box>
           </Box>
         </HStack>
