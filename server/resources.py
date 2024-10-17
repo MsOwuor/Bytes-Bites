@@ -1,10 +1,18 @@
 from flask import request
-from flask_restful import Resource
+from flask_restful import Resource, reqparse
 from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
 from models.user import User
 from models.newspost import NewsPost
 from models.recipe import Recipe
-from dbconfig import db
+from models.models import Post, Comment
+from app import db
+
+post_parser = reqparse.RequestParser()
+post_parser.add_argument(' title' , type=str, required=True, help='Title is required')
+post_parser.add_argument('body', type=str, required=True, help='Body is required')
+
+comment_parser = reqparse.RequestParser()
+comment_parser.add_argument('text', type=str, required=True, help='Comment text is required')
 
 class UserRegister(Resource):
     def post(self):
@@ -57,16 +65,55 @@ class NewsPostListResource(Resource):
     @jwt_required()
     def get(self):
         posts = NewsPost.query.all()
-        return [{'id': post.id, 'title': post.title, 'content': post.content, 'user_id': post.user_id} for post in posts]
+        return [{
+            'id': post.id,
+            'title': post.title,
+            'content': post.content} for post in posts]
+
+class PostListResource(Resource):
+    def get(self):
+        posts = Post.query.all()
+        return [{
+            'id': post.id,
+            'title': post.title,
+            'body': post.body,
+            'likes': post.likes,
+            'comments' :[{'id' : c.id, 'text' : c.text} for c in post.comments]} for post in posts]
 
     @jwt_required()
     def post(self):
-        data = request.get_json()
+        data = post_parser.parse_args()
         user_id = get_jwt_identity()
-        post = NewsPost(title=data['title'], content=data['content'], user_id=user_id)
-        db.session.add(post)
+        new_post = Post(title=data['title'], body=data['body'], user_id=user_id)
+        db.session.add(new_post)
         db.session.commit()
-        return {'message': 'Post created successfully'}, 201
+        return {'message': 'Post created successfully', 'post_id' : new_post.id}, 201
+
+class PostResource(Resource):
+    def get(self, post_id):
+        post = Post.query.get_or_404(post_id)
+        return {
+            'id': post.id,
+            'title': post.title,
+            'body': post.body,
+            'likes': post.likes,
+            'comments': [{'id': c.id, 'text': c.text} for c in post.comments]
+            }
+    @jwt_required()
+    def post(self, post_id):
+        post = Post.query.get_or_404(post_id)
+        post.likes += 1
+        db.session.commit()
+        return {'message': 'Post liked', 'likes': post.likes}
+
+class CommentResource(Resource):
+    def post(self, post_id):
+        data = comment_parser.parse_args()
+        new_comment = Comment(post_id=post_id, text=data['text'])
+        db.session.add(new_comment)
+        db.session.commit()
+        return {'message': 'Comment added', 'comment_id': new_comment.id}, 201
+
 
 class UserProfileResource(Resource):
     @jwt_required()
@@ -77,7 +124,6 @@ class UserProfileResource(Resource):
         return {'email': user.email, 'posts': posts}
 
 class RecipeResource(Resource):
-    @jwt_required()
     def get(self, recipe_id):
         recipe = Recipe.query.get_or_404(recipe_id)
         return {
@@ -133,7 +179,6 @@ class RecipeResource(Resource):
         return {'message': 'Recipe deleted successfully'}
 
 class RecipeListResource(Resource):
-    @jwt_required()
     def get(self):
         recipes = Recipe.query.all()
         return [{

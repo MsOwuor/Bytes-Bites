@@ -1,4 +1,4 @@
-from dbconfig import db
+from app import db
 
 class NewsPost(db.Model):
     id = db.Column(db.Integer, primary_key=True)

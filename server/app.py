@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_cors import CORS
 from dotenv import load_dotenv
+from flask_bcrypt import Bcrypt
 import os
 
 load_dotenv()
@@ -16,14 +17,17 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["JWT_SECRET_KEY"] = os.getenv('JWT_SECRET_KEY')
 
 db = SQLAlchemy(app)
+bcrypt = Bcrypt(app)
 migrate = Migrate(app, db)
 jwt = JWTManager(app)
 CORS(app)
 api = Api(app)
 
 # Import resources
-from resources import UserRegister, UserLogin, NewsPostResource, NewsPostListResource, UserProfileResource
-from resources import RecipeResource, RecipeListResource
+from resources import (
+        UserRegister, UserLogin, NewsPostResource, NewsPostListResource, UserProfileResource,
+                RecipeResource, RecipeListResource, PostResource, PostListResource, CommentResource
+                )
 
 # API resource endpoints
 api.add_resource(UserRegister, '/register')
@@ -33,6 +37,11 @@ api.add_resource(NewsPostListResource, '/news')
 api.add_resource(UserProfileResource, '/profile')
 api.add_resource(RecipeResource, '/recipes/<int:recipe_id>')
 api.add_resource(RecipeListResource, '/recipes')
+
+# New endpoints for posts, likes, and comments
+api.add_resource(PostResource, '/posts/<int:post_id>')
+api.add_resource(PostListResource, '/posts')
+api.add_resource(CommentResource, '/posts/<int:post_id>/comments')
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -46,6 +46,7 @@ const Navbar = ({ isLoggedIn, handleLogout }) => {
             <Link to="/news">Bites</Link>
             <Link to="/about">About Us</Link>
             <Link to="/contact">Contact Us</Link>
+	  <Link to="/posts">Posts</Link>
           </HStack>
         </Center>
         <Flex alignItems="center">
@@ -98,6 +99,9 @@ const Navbar = ({ isLoggedIn, handleLogout }) => {
             <Link to="/contact" onClick={onClose}>
               Contact Us
             </Link>
+	      <Link to="posts" onClick={onClose}>
+	      Posts
+	      </Link>
             {isLoggedIn ? (
               <>
                 <Link to="/account" onClick={onClose}>

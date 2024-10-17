@@ -12,6 +12,8 @@ import MyAccount from './components/MyAccount';
 import Bites from './components/Bites';
 import Portfolio from './components/Portfolio';
 import Footer from './components/Footer'; // Import Footer component
+import Posts from './components/Posts';
+import NewPost from './components/NewPost';
 
 const App = () => {
   return (
@@ -27,8 +29,10 @@ const App = () => {
             <Route path="/services" element={<Services />} />
             <Route path="/news" element={<Bites />} />
             <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/about" element={<AboutUs />} />
-            <Route path="/contact" element={<ContactUs />} />
+            <Route path="/about" element={<AboutUs />} />  
+	    <Route path="/contact" element={<ContactUs />} />
+	    <Route path="/posts" element={<Posts />} />
+	    <Route path="/posts/new" element={<NewPost />} />
           </Routes>
         </Box>
         <Footer /> {/* Include Footer component here */}
