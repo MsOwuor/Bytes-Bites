@@ -29,7 +29,7 @@ from resources import (
                 RecipeResource, RecipeListResource, PostResource, PostListResource, CommentResource
                 )
 
-# API resource endpoints
+#api.add_resource(Home, '/')   API resource endpoints
 api.add_resource(UserRegister, '/register')
 api.add_resource(UserLogin, '/login')
 api.add_resource(NewsPostResource, '/news/<int:post_id>')

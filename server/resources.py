@@ -13,6 +13,9 @@ post_parser.add_argument('body', type=str, required=True, help='Body is required
 
 comment_parser = reqparse.RequestParser()
 comment_parser.add_argument('text', type=str, required=True, help='Comment text is required')
+class Home(Resource):
+    def get(self):
+        return make_response({"message": "Welcome to Bytes and Bites API"}, 200)
 
 class UserRegister(Resource):
     def post(self):
