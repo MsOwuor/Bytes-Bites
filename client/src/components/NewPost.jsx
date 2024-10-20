@@ -3,12 +3,12 @@ import { Box, Heading, Input, Textarea, Button, FormControl, FormLabel, Spinner,
 import { createPost } from '../api/api';
 import { useNavigate } from 'react-router-dom'; // for redirection
 
-const NewPost = () => {
+const NewPost = ({ onCreatePost }) => {
 	    const [title, setTitle] = useState('');
 	    const [body, setBody] = useState('');
 	    const [successMessage, setSuccessMessage] = useState('');
 	    const [errorMessage, setErrorMessage] = useState('');
-	    const [loading, setLoading] = UseState(false);
+	    const [loading, setLoading] = useState(false);
 	    const navigate = useNavigate();
 
 	const handleSubmit = async (e) => {
@@ -25,7 +25,7 @@ const NewPost = () => {
 	             		    setSuccessMessage('Post created successfully!');
 			            setTitle('');
 				    setBody('');
-			            console.log('New Post:', newPost);
+				    onCreatePost(newPost);
 				    setTimeout(() => navigate('/posts'), 1500);
 		} catch (error) {
 			            setErrorMessage('Failed to create post: ' + error.response.data.message);
@@ -42,15 +42,37 @@ const NewPost = () => {
 			<form onSubmit={handleSubmit}>
 				<FormControl id="title" mb="4">
 					<FormLabel>Title</FormLabel>
-					<Input value={title} onChange={(e) => setTitle(e.target.value)} />
+					<Input
+						value={title} 
+						onChange={(e) => {
+							setTitle(e.target.value);
+							setSuccessMessage('');
+							setErrorMessage('');
+						}}
+					/>	
 				</FormControl>
 				<FormControl id="body" mb="4">
 					<FormLabel>Body</FormLabel>
-					<Textarea value={body} onChange={(e) => setBody(e.target.value)} />
+					<Textarea
+						value={body}
+						onChange={(e) => {
+							setBody(e.target.value);
+							setSuccessMessage('');
+							setErrorMessage('');
+						}}
+					/>
 				</FormControl>
-				<Button type="submit" colorScheme="blue" width="100%">Create Post</Button>
-			 </form>
-		 </Box>
+				<Button
+					type="submit"
+					colorScheme="blue"
+					isLoading={loading} //show loading state
+					loadingText="Creating..."
+				> 
+					Create post
+				</Button>
+			</form>
+		</Box>
 	);
 };
+
 export default NewPost;

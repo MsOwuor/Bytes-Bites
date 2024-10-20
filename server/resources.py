@@ -8,7 +8,7 @@ from models.models import Post, Comment
 from app import db
 
 post_parser = reqparse.RequestParser()
-post_parser.add_argument(' title' , type=str, required=True, help='Title is required')
+post_parser.add_argument('title' , type=str, required=True, help='Title is required')
 post_parser.add_argument('body', type=str, required=True, help='Body is required')
 
 comment_parser = reqparse.RequestParser()
@@ -71,7 +71,7 @@ class NewsPostListResource(Resource):
         return [{
             'id': post.id,
             'title': post.title,
-            'content': post.content} for post in posts]
+            'content': post.content} for post in posts], 200
 
 class PostListResource(Resource):
     def get(self):
@@ -81,11 +81,14 @@ class PostListResource(Resource):
             'title': post.title,
             'body': post.body,
             'likes': post.likes,
-            'comments' :[{'id' : c.id, 'text' : c.text} for c in post.comments]} for post in posts]
+            'comments' :[{'id' : c.id, 'text' : c.text} for c in post.comments]} for post in posts], 200
 
     @jwt_required()
     def post(self):
-        data = post_parser.parse_args()
+        data = request.get_json()
+        print("incoming request data:", data)
+
+        parsed_data = post_parser.parse_args()
         user_id = get_jwt_identity()
         new_post = Post(title=data['title'], body=data['body'], user_id=user_id)
         db.session.add(new_post)

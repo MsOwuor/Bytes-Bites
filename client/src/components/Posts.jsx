@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Heading, Text, Button } from '@chakra-ui/react';
-import { fetchPosts, createPost } from '../api/api'; // Import the fetchPosts function
+import { fetchPosts } from '../api/api'; // Import the fetchPosts function
 import NewPost from './NewPost';
 
 const Posts = () => {
