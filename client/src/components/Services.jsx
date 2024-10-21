@@ -18,7 +18,7 @@ const Services = () => {
             <Box p="6">
               <Heading as="h3" size="lg" mb="4">Our Culinary Arts</Heading>
               <Text mb="4">From selecting the finest ingredients to creating stunning presentations, our culinary experts are dedicated to delivering exceptional results.</Text>
-              <Button as={Link} to="/Bites" colorScheme="teal">Learn More</Button>
+              <Button as={Link} to="/news" colorScheme="teal">Enjoy</Button>
             </Box>
           </Box>
         </motion.div>
@@ -40,7 +40,7 @@ const Services = () => {
             <Box p="6">
               <Heading as="h3" size="lg" mb="4">Personal Life</Heading>
               <Text mb="4">Discover my journey as a mom of two girls and a wife, balancing family life with personal growth, sharing insights, challenges, and triumphs along the way.</Text>
-              <Button as={Link} to="/contact" colorScheme="teal">Contact Us</Button>
+              <Button as={Link} to="/posts" colorScheme="teal">View</Button>
             </Box>
           </Box>
         </motion.div>
