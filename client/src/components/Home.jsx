@@ -14,7 +14,7 @@ const Home = () => {
 	useEffect(() => {
 		const loadPosts = async () => {
 			try {
-				const fetchPosts = await fetchPosts();
+				const fetchedPosts = await fetchPosts();
 				setPosts(fetchedPosts);
 			} catch (error) {
 				console.error('Error fetching posts:', error);
@@ -27,7 +27,8 @@ const Home = () => {
 	}, []);
 
 	return (
-    	<Box position="relative" w="100%" h="100vh">
+    	<Box position="relative" w="100%" minH="100vh">
+
       		<Box className="w-full h-full overflow-hidden">
         		<Carousel autoPlay interval={3000} infiniteLoop showThumbs={false} showStatus={false}>
           			<div>
@@ -41,6 +42,7 @@ const Home = () => {
           			</div>
         		</Carousel>
       		</Box>
+
       		<Flex
         		direction={{ base: 'column', md: 'row' }}
         		align="center"
@@ -54,7 +56,7 @@ const Home = () => {
         		bg="rgba(0, 0, 0, 0.5)"
         		color="white"
       		>
-        		<Stack spacing={4} maxW="lg" textAlign={{ base: 'center', md: 'left' }} className="md:text-left">
+        		<Stack spacing={4} maxW="lg" textAlign={{ base: 'center', md: 'left' }}>
           			<Text fontSize={{ base: '2xl', md: '4xl' }} fontWeight="bold" className="animate__animated animate__fadeInLeft">
             Code and Cook : Where technology meets Motherhood
           			</Text>
@@ -71,6 +73,7 @@ const Home = () => {
             				Learn More
           			</Button>
         		</Stack>
+
         			<Box mt={{ base: 8, md: 0 }} ml={{ md: 8 }} className="relative animate__animated animate__fadeInRight animate__delay-3s">
           				<Image
             					src="/profile.jpg"
@@ -81,8 +84,9 @@ const Home = () => {
           				/>
         			</Box>
       			</Flex>
+
 			<Box mt="8" p="4">
-				<Text fontsize="2xl" fontWeight="bold" mb="4">Latest Posts</Text>
+				<Text fontSize="2xl" fontWeight="bold" mb="4">Latest Posts</Text>
 				{loading ? (
 					<Text>Loading posts...</Text> // Show loading text while fetching
 				) : (
@@ -95,7 +99,8 @@ const Home = () => {
 					))
 				)}
 		</Box>
-		<Box mt="8" textAlign="center">
+
+		<Box mt="8" textAlign="center" MB="8">
 		   <Button as={Link} to="posts/new" colorscheme="teal" size="lg">
 			Create a New Post
 		</Button>
