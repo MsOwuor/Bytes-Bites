@@ -18,7 +18,7 @@ const Services = () => {
             <Box p="6">
               <Heading as="h3" size="lg" mb="4">Our Culinary Arts</Heading>
               <Text mb="4">From selecting the finest ingredients to creating stunning presentations, our culinary experts are dedicated to delivering exceptional results.</Text>
-              <Button as={Link} to="/Bites" colorScheme="teal">Enjoy</Button>
+              <Button as={Link} to="/news" colorScheme="teal">Enjoy</Button>
             </Box>
           </Box>
         </motion.div>
