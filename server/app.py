@@ -2,7 +2,7 @@ from flask import Flask
 from flask_restful import Api
 from flask_cors import CORS
 from dotenv import load_dotenv
-from extensions import db, bcrypt, jwt  # Updated import
+from server.extensions import db, bcrypt, jwt  # Updated import
 from flask_migrate import Migrate
 import os
 
@@ -23,7 +23,7 @@ CORS(app)
 api = Api(app)
 
 def register_resources(api):
-    from resources import (
+    from .resources import (
         UserRegister, UserLogin, NewsPostResource, NewsPostListResource, UserProfileResource,
         RecipeResource, RecipeListResource, PostResource, PostListResource, CommentResource
     )

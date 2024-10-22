@@ -1,11 +1,11 @@
 from flask import request, make_response
 from flask_restful import Resource, reqparse
 from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
-from extensions import db, bcrypt
-from models.user import User
-from models.newspost import NewsPost
-from models.recipe import Recipe
-from models.models import Post, Comment
+from server.extensions import db, bcrypt
+from server.models.user import User
+from .models.newspost import NewsPost
+from .models.recipe import Recipe
+from .models.models import Post, Comment
 
 
 post_parser = reqparse.RequestParser()
