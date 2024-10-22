@@ -29,6 +29,10 @@ const Register = () => {
 		    password: password,
 		  });
 		  setMessage(response.data.message);
+
+		  if (response.status === 201) {
+			  setTimeout(() => navigate('/login'), 1500);
+		  }
 	  } catch (error) {
 		  setMessage('Registration failed: ' + (error.response.data.message || 'Unknown error'));
 	  } finally {
