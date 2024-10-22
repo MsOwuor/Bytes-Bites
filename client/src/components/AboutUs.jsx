@@ -18,7 +18,15 @@ const AboutUs = () => {
       <Stack spacing="8" maxW="800px" mx="auto">
         <motion.div initial="hidden" animate="visible" variants={cardVariants}>
           <Text fontSize="lg" textAlign="center">
-            Our company offers a unique blend of IT solutions and culinary expertise, providing our clients with a seamless journey from recipe to plate. Our team of experts is dedicated to delivering exceptional service and results.
+            Welcome to Bytes and Bites, where the worlds of coding and motherhood come together. Our platform is designed for moms who are passionate about technology, balancing careers, and raising children—often all at once. As a community of women in tech, we share our journeys, struggles, and successes in navigating the fast-paced world of coding while embracing the joy and chaos of motherhood.
+
+	  Here, we believe in the power of stories—stories of perseverance, learning, and growth. Whether you’re writing code during naptime, troubleshooting errors between feedings, or finding time to develop your skills while juggling school drop-offs, our platform offers a supportive space for you to share your experiences.
+
+	  At Bytes and Bites, we empower each other by sharing real stories, tech tips, and recipes for both life and coding. Our goal is to build a thriving community where moms in tech can come together to find support, inspiration, and practical advice to keep moving forward.
+
+	  Join us as we break barriers, challenge stereotypes, and prove that motherhood and a career in IT can go hand in hand.
+
+	  .
           </Text>
         </motion.div>
 

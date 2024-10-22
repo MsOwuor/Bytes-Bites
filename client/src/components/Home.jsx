@@ -58,7 +58,7 @@ const Home = () => {
       		>
         		<Stack spacing={4} maxW="lg" textAlign={{ base: 'center', md: 'left' }}>
           			<Text fontSize={{ base: '2xl', md: '4xl' }} fontWeight="bold" className="animate__animated animate__fadeInLeft">
-            Code and Cook : Where technology meets Motherhood
+            Code and Chaos : Where technology meets Motherhood
           			</Text>
           			<Text fontSize={{ base: 'lg', md: '2xl' }} className="animate__animated animate__fadeInLeft animate__delay-1s">
             Welcome to my online home. I invite you to explore my life and learn more about me.
@@ -94,7 +94,7 @@ const Home = () => {
 						<Box key={post.id} borderWidth="1px" borderRadius="lg" p="4" mb="4" bg="white" color="black">
 						<Text fontSize="xl" fontWeight="bold">{post.title}</Text>
 						<Text>{post.body.slice(0, 100)}...</Text> {/* Display a snippet of the post body */}
-						<Button as={Link} to={`/posts/${post.id}`} mt="2" colorScheme="blue">Read More</Button>
+						<Button as={Link} to="/posts" mt="2" colorScheme="blue">Read More</Button>
 						</Box>
 					))
 				)}
