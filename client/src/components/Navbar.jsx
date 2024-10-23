@@ -12,7 +12,6 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
-  MenuDivider,
   HStack,
   Center,
 } from '@chakra-ui/react';
@@ -24,6 +23,7 @@ const Navbar = ({ isLoggedIn, handleLogout }) => {
   return (
     <Box bg="lightblue" px={4}>
       <Flex h={16} alignItems="center" justifyContent="space-between">
+        {/* Mobile Menu Button */}
         <IconButton
           size="md"
           icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
@@ -31,6 +31,8 @@ const Navbar = ({ isLoggedIn, handleLogout }) => {
           display={{ md: 'none' }}
           onClick={isOpen ? onClose : onOpen}
         />
+        
+        {/* Logo Section */}
         <HStack spacing={8} alignItems="center">
           <Box as={Link} to="/" display="flex" alignItems="center">
             <Image src="/slide1.jpg" alt="Logo" boxSize="40px" mr="2" />
@@ -39,6 +41,8 @@ const Navbar = ({ isLoggedIn, handleLogout }) => {
             </Box>
           </Box>
         </HStack>
+
+        {/* Navigation Links (Visible on larger screens) */}
         <Center flex="1" display={{ base: 'none', md: 'flex' }}>
           <HStack as="nav" spacing={8}>
             <Link to="/">Home</Link>
@@ -46,9 +50,11 @@ const Navbar = ({ isLoggedIn, handleLogout }) => {
             <Link to="/news">Bites</Link>
             <Link to="/about">About Us</Link>
             <Link to="/contact">Contact Us</Link>
-	  <Link to="/posts">Posts</Link>
+            <Link to="/posts">Posts</Link>
           </HStack>
         </Center>
+
+        {/* Account/Login-Logout Section */}
         <Flex alignItems="center">
           {isLoggedIn ? (
             <Menu>
@@ -81,7 +87,8 @@ const Navbar = ({ isLoggedIn, handleLogout }) => {
         </Flex>
       </Flex>
 
-      {isOpen ? (
+      {/* Mobile Menu (Dropdown) */}
+      {isOpen && (
         <Box pb={4} display={{ md: 'none' }}>
           <Stack as="nav" spacing={4}>
             <Link to="/" onClick={onClose}>
@@ -99,9 +106,10 @@ const Navbar = ({ isLoggedIn, handleLogout }) => {
             <Link to="/contact" onClick={onClose}>
               Contact Us
             </Link>
-	      <Link to="posts" onClick={onClose}>
-	      Posts
-	      </Link>
+            <Link to="/posts" onClick={onClose}>
+              Posts
+            </Link>
+
             {isLoggedIn ? (
               <>
                 <Link to="/account" onClick={onClose}>
@@ -123,7 +131,7 @@ const Navbar = ({ isLoggedIn, handleLogout }) => {
             )}
           </Stack>
         </Box>
-      ) : null}
+      )}
     </Box>
   );
 };
