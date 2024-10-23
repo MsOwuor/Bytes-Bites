@@ -17,7 +17,7 @@ const Register = () => {
     setMessage('');
     setLoading(true);
 
-    // Basic validation, replace with actual signup logic
+    
     if (!email || !password) {
       alert('Please enter both email and password.');
       setLoading(false);	    
