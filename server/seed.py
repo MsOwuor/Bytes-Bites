@@ -1,8 +1,5 @@
-# seed.py
-
-from app import app
-from dbconfig import db
-from models.recipe import Recipe
+from dbconfig import db, app
+from models import Recipe
 
 # Create all tables
 with app.app_context():
@@ -42,7 +39,7 @@ with app.app_context():
                 4 cups water(960 mL)
                 2 cups basmati rice(400 g)
             ''',
-            'directions': '''
+            'preparation': '''
                 1. Make the pilau masala: In a medium bowl, combine the cumin, paprika, cardamom, black pepper, and cloves. Set aside.
                 2. Heat a large pot over medium-high heat. Add the oil and red onion and sauté for 10-15 minutes, until dark brown.
                 3. Add the garlic, ginger, serrano chile, pilau masala, beef stock cubes, cinnamon stick, and cilantro. Cook for 1-2 minutes, until fragrant.
@@ -51,7 +48,8 @@ with app.app_context():
                 6. Add the potatoes and the water. Bring to a boil and cook for 10 minutes.
                 7. Add the rice, stir, and cover. Reduce the heat to medium-low and cook for 20 minutes, until the rice is cooked and the liquid is absorbed.
             ''',
-            'image_url': 'client/public/masala.jpeg'
+            'image_url': 'client/public/masala.jpeg',
+            'user_id': 1  # Assuming you have a user with ID 1
         },
         {
             'title': 'Beef Matoke',
@@ -70,7 +68,7 @@ with app.app_context():
                 1 teaspoon paprika
                 1/4 cup of curry powder
             ''',
-            'directions': '''
+            'preparation': '''
                 1. Apply oil on your hands and peel the bananas to prevent your hands from getting sticky
                 2. Place the bananas in a bowl of water with salt to prevent the bananas from turning dark
                 3. In a cooking pot boil the meat by adding one cup of water and let it boil for about 20 minutes or until it’s tender
@@ -78,7 +76,8 @@ with app.app_context():
                 5. Add the onions and let it cook for about three minutes. Add the tomatoes and paprika, stir and let them simmer until the tomatoes soften
                 6. Add the bananas to the beef and stir. Add water, salt, coriander, black pepper and curry powder and let it simmer until the bananas are soft
             ''',
-            'image_url': 'client/public/pilaubeef.jpeg'
+            'image_url': 'client/public/pilaubeef.jpeg',
+            'user_id': 1  # Assuming you have a user with ID 1
         },
         # Add more recipes as needed
     ]
