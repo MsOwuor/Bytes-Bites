@@ -13,21 +13,21 @@ const Login = () => {
     e.preventDefault();
     setErrorMessage('');
 
-    // Basic validation, replace with actual authentication logic
+    
     if (!email || !password) {
       alert('Please enter both email and password.');
       return;
     }
     try {
 	const response = await loginUser(email, password); 
-	console.log('Login successful!', response); // Check if you get the token here
-	alert('Login successful! Token: ' + response.access_token); // Display success message or handle token
-	                      // You can save the token to local storage or state if needed
+	console.log('Login successful!', response); 
+	alert('Login successful! Token: ' + response.access_token); 
+	                      
 	localStorage.setItem('token', response.access_token);
 	navigate('/');
 
 	} catch (error) {
-	  setErrorMessage('Login failed: ' + error.response.data.message); // Display error message
+	  setErrorMessage('Login failed: ' + error.response.data.message); 
 	}
 };
 
