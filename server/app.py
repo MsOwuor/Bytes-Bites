@@ -23,7 +23,7 @@ CORS(app)
 api = Api(app)
 
 def register_resources(api):
-    from .resources import (
+    from server.resources import (
         UserRegister, UserLogin, NewsPostResource, NewsPostListResource, UserProfileResource,
         RecipeResource, RecipeListResource, PostResource, PostListResource, CommentResource
     )

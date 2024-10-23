@@ -2,7 +2,9 @@ from  server.extensions import db
 from werkzeug.security import generate_password_hash, check_password_hash
 
 class User(db.Model):
-        __tablename__ = 'users'
+        __tablename__ = 'user'
+        __table_args__ = {'extend_existing': True}  
+
         id = db.Column(db.Integer, primary_key=True)
         email = db.Column(db.String(120), unique=True, nullable=False)
         password_hash = db.Column(db.String(128))
@@ -17,17 +19,19 @@ class User(db.Model):
             return check_password_hash(self.password_hash, password)
         
 
-class Post(db.Model):
-        __tablename__ = 'posts'
+class NewsPost(db.Model):
+        __tablename__ = 'news_posts'
+        __table_args__ = {'extend_existing': True} 
         id = db.Column(db.Integer, primary_key=True)
-        title = db.Column(db.String(255), nullable=False)
+        title = db.Column(db.String(200), nullable=False)
         body = db.Column(db.Text, nullable=False)
-        likes = db.Column(db.Integer, default=0)
         user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-        comments = db.relationship('Comment', backref='post', lazy=True)
+        
 
 class Comment(db.Model):
         __tablename__ = 'comments'
         id = db.Column(db.Integer, primary_key=True)                                         
-        post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), nullable=False)
+        post_id = db.Column(db.Integer, db.ForeignKey('news_post.id'), nullable=False)
         text = db.Column(db.Text, nullable=False)
+
+
