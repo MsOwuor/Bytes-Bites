@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Heading, Input, Textarea, Button, FormControl, FormLabel, Spinner, Text } from '@chakra-ui/react';
 import { createPost } from '../api/api';
-import { useNavigate } from 'react-router-dom'; // for redirection
+import { useNavigate } from 'react-router-dom'; 
 
 const NewPost = ({ onCreatePost }) => {
 	    const [title, setTitle] = useState('');
@@ -21,7 +21,7 @@ const NewPost = ({ onCreatePost }) => {
 		}
 		try {
 				    setLoading(true);
-			            const newPost = await createPost(title, body); // Create the new post
+			            const newPost = await createPost(title, body); 
 	             		    setSuccessMessage('Post created successfully!');
 			            setTitle('');
 				    setBody('');
@@ -65,7 +65,7 @@ const NewPost = ({ onCreatePost }) => {
 				<Button
 					type="submit"
 					colorScheme="blue"
-					isLoading={loading} //show loading state
+					isLoading={loading} 
 					loadingText="Creating..."
 				> 
 					Create post
