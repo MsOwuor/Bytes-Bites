@@ -25,10 +25,10 @@ const Posts = () => {
         loadPosts();
     }, []);
 
-    // Function to handle liking a post
+    
     const handleLike = async (postId) => {
         try {
-            const updatedPost = await likePost(postId); // Call API to like the post
+            const updatedPost = await likePost(postId); 
             setPosts((prevPosts) =>
                 prevPosts.map((post) =>
                     post.id === postId ? { ...post, likes: updatedPost.likes } : post
@@ -39,24 +39,24 @@ const Posts = () => {
         }
     };
 
-    // Function to handle adding a comment
+    
     const handleAddComment = async (postId) => {
-        if (!commentText) return; // Ensure comment isn't empty
+        if (!commentText) return; 
         try {
-            const updatedPost = await addCommentToPost(postId, commentText); // Call API to add comment
+            const updatedPost = await addCommentToPost(postId, commentText); 
             setPosts((prevPosts) =>
                 prevPosts.map((post) =>
                     post.id === postId ? { ...post, comments: updatedPost.comments } : post
                 )
             );
-            setCommentText(''); // Clear the comment input
-            setActiveCommentPostId(null); // Close the comment section
+            setCommentText(''); 
+            setActiveCommentPostId(null); 
         } catch (err) {
             setError('Error adding comment.');
         }
     };
 
-    // Function to handle creating a new post
+    
     const handleCreatePost = (newPost) => {
         setPosts((prevPosts) => [...prevPosts, newPost]);
     };
